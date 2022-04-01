@@ -1,0 +1,268 @@
+
+--[[
+local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
+local win = Flux:Window("PREVIEW", "Baseplate", Color3.fromRGB(255, 110, 48), Enum.KeyCode.LeftControl)
+local tab = win:Tab("Tab 1", "http://www.roblox.com/asset/?id=6023426915")
+
+
+--NOTIFICATION
+
+Flux:Notification("Killed all players successfully!", "Alright")
+
+--BUTTON
+
+tab:Button("Kill all", "This function may not work sometimes and you can get banned.", function()
+Flux:Notification("Killed all players successfully!", "Alright")
+end)
+
+--LABEL
+
+tab:Label("This is just a label.")
+tab:Line()
+
+--TOGGLE
+
+tab:Toggle("Title", "Description", false, function(t)
+getgenv().command = t
+    while true do
+        if not getgenv().command then return end
+        wait(0.001)
+        -- Script
+    end
+end)
+
+--SLIDER
+
+tab:Slider("Walkspeed", "Makes your faster.", 0, 100,16,function(t)
+print(t)
+end)
+
+--DROPDOWN
+
+tab:Dropdown("Part to aim at", {"Torso","Head","Penis"}, function(t)
+print(t)
+end)
+
+--COLORPICKER
+
+tab:Colorpicker("ESP Color", Color3.fromRGB(255,1,1), function(t)
+print(t)
+end)
+
+--TEXTBOX
+
+tab:Textbox("Gun Power", "This textbox changes your gun power, so you can kill everyone faster and easier.", true, function(t)
+print(t)
+end)
+
+--BIND
+
+tab:Bind("Kill Bind", Enum.KeyCode.Q, function()
+print("Killed a random person!")
+end)
+
+--TAB
+
+win:Tab("Tab 2", "http://www.roblox.com/asset/?id=6022668888")
+
+local tab2 = win:Tab("Player", "http://www.roblox.com/asset/?id=6023426915")
+
+tab2:Label("- Player -")
+
+tab2:Slider("Walkspeed", "Makes your faster.", 0, 500,16,function(t)
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = t
+end)
+
+tab2:Slider("Jump Power", "Makes you jump higher.", 0, 500,16,function(t)
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = t
+]]
+
+if game.PlaceId == 7896264844 then
+local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
+local win = Flux:Window("Sober Hub", "Find the Markers", Color3.fromRGB(255, 110, 48), Enum.KeyCode.LeftControl)
+local tab = win:Tab("Main", "http://www.roblox.com/asset/?id=6023426915")
+
+tab:Label("- Marker Options -")
+
+tab:Button("Enable Marker Esp", "This enables marker esp (might show other items too [a toggle didnt work])", function()
+-- script by duckarch#3029
+local players = game.Players
+local selected_marker = game.Workspace["Ball Marker"]
+
+for i,v in pairs(game.Workspace:GetDescendants()) do
+    if v.Name == "Face" then
+        local billboardGUi2 = Instance.new("BillboardGui")
+billboardGUi2.Parent = v --selected_marker.Face
+billboardGUi2.Size = UDim2.new(1.5, 0, 1.5, 0)
+billboardGUi2.AlwaysOnTop = true
+billboardGUi2.StudsOffset = Vector3.new(0,2,0)
+
+local textlabel = Instance.new("TextLabel")
+textlabel.Parent = billboardGUi2
+textlabel.Text = v.Parent.Name
+textlabel.Size = UDim2.new(4,0,2,0)
+textlabel.TextScaled = true
+textlabel.BackgroundTransparency = 0
+textlabel.Font = Enum.Font.Cartoon
+textlabel.TextColor3 = Color3.fromRGB(255,255,255)
+    end
+end
+end)
+
+tab:Button("Disable Marker Esp", "This disables marker esp (might show other items too [a toggle didnt work])", function()
+-- script by duckarch#3029
+local players = game.Players
+local selected_marker = game.Workspace["Ball Marker"]
+
+for i,v in pairs(game.Workspace:GetDescendants()) do
+    if v.Name == "Face" then
+        v.BillboardGui:Destroy()
+    end
+end
+end)
+
+tab:Label("- Extra -")
+
+local player_to_tpto
+
+tab:Textbox("Player to teleport to", "Insert the players user you want to teleport to!", true, function(t)
+player_to_tpto.Value = t
+end)
+
+tab:Button("Teleport to player", "This teleports you to the selected player", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players:WaitForChild(player_to_tpto).Character.HumanoidRootPart.CFrame
+end)
+
+tab:Button("Destroy UI", "This will completely remove this UI", function()
+Flux:Notification("The UI is being destroyed...", "Alright")
+wait(1)
+game.CoreGui.FluxLib:Destroy()
+end)
+
+
+local tab2 = win:Tab("Player", "http://www.roblox.com/asset/?id=6023426915")
+
+tab2:Label("- Player -")
+
+tab2:Slider("Walkspeed", "Makes your faster.", 0, 500,16,function(t)
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = t
+end)
+
+tab2:Slider("Jump Power", "Makes you jump higher.", 0, 500,16,function(t)
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = t
+end)
+
+
+-- [[ GAME DIVIDER ]]
+
+
+elseif game.PlaceId == 8382553377 then
+local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
+local win = Flux:Window("Sober Hub", "Boom Simulator", Color3.fromRGB(255, 110, 48), Enum.KeyCode.LeftControl)
+local tab = win:Tab("Main", "http://www.roblox.com/asset/?id=6023426915")
+
+tab:Label("- Automatic Features -")
+
+local item_to_farm
+
+tab:Dropdown("Object to autofarm", {" - ZONE 1 - ","Crate", "Chest"}, function(t)
+item_to_farm = t
+print(item_to_farm)
+end)
+
+tab:Toggle("Auto Farm", "Autofarms the selected item!", false, function(t)
+getgenv().command = t
+    while true do
+        if not getgenv().command then return end
+        wait(0.001)
+         local args = {
+    [1] = "SelectObject",
+    [2] = workspace.Objects:WaitForChild(item_to_farm).HitBox
+}
+
+game:GetService("ReplicatedStorage").Communication.RE:FireServer(unpack(args))
+wait(5)
+    end
+end)
+
+tab:Toggle("Auto Rebirth", "Automatically rebirths!", false, function(t)
+getgenv().command = t
+    while true do
+        if not getgenv().command then return end
+        wait(0.001)
+         local args = {
+    [1] = "RebirthRequest"
+}
+
+game:GetService("ReplicatedStorage").Communication.RE:FireServer(unpack(args))
+wait(5)
+    end
+end)
+
+tab:Toggle("Auto Buy Nukes", "Automatically buys nukes! (Gets buggy with autofarm on)", false, function(t)
+getgenv().command = t
+    while true do
+        if not getgenv().command then return end
+        wait(0.001)
+local args = {
+    [1] = "CamShop",
+    [2] = "BuyAll",
+    [3] = "Nukes",
+    [4] = 111
+}
+
+game:GetService("ReplicatedStorage").Communication.RE:FireServer(unpack(args))
+
+wait(.5)
+    end
+end)
+
+tab:Toggle("Auto Buy Next Zone", "Automatically buys the next zone! (Gets buggy with autofarm on)", false, function(t)
+getgenv().command = t
+    while true do
+        if not getgenv().command then return end
+        wait(0.001)
+local args = {
+    [1] = "UpgradeZone"
+}
+
+game:GetService("ReplicatedStorage").Communication.RE:FireServer(unpack(args))
+wait(.5)
+    end
+end)
+
+tab:Label("- Extra -")
+
+--tab:Toggle("Disable Pop-Ups", "This hides popups like the gain effect or rebirth effect", false, function(t)
+--getgenv().command = t
+ --   while true do
+      --  if not getgenv().command then return end
+      --  wait(0.001)
+        --	if game.Players.LocalPlayer.PlayerGui:FindFirstChild("MainImgTemplate") ~= nil then
+        ---	game.Players.LocalPlayer.PlayerGui:FindFirstChild("MainImgTemplate"):Destroy()
+		--	end
+			--
+		--	if game.Players.LocalPlayer.PlayerGui:FindFirstChild("MainTextTemplate") ~= nil then
+      --  		game.Players.LocalPlayer.PlayerGui:FindFirstChild("MainTextTemplate"):Destroy()
+	--		end
+  --  end
+--end)
+
+tab:Button("Destroy UI", "This will completely remove this UI", function()
+Flux:Notification("The UI is being destroyed...", "Alright")
+wait(1)
+game.CoreGui.FluxLib:Destroy()
+end)
+
+local tab2 = win:Tab("Player", "http://www.roblox.com/asset/?id=6023426915")
+
+tab2:Label("- Player -")
+
+tab2:Slider("Walkspeed", "Makes your faster.", 0, 500,16,function(t)
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = t
+end)
+
+tab2:Slider("Jump Power", "Makes you jump higher.", 0, 500,16,function(t)
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = t
+end)
+end
